@@ -1,0 +1,15 @@
+# Compilied Binaries
+*.so
+*.so.*
+*.a
+*.o
+
+# Package Config
+*.pc
+
+# Example Binaries
+examples/pwnedpassword
+
+# Build/OS Artifacts
+.DS_Store
+.cache/
