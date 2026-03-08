@@ -63,6 +63,3 @@ clean:
 	rm -f $(OBJECTS) $(TARGET) $(SONAME) $(DEVLINK) $(PCFILE)
 
 .PHONY: all clean install uninstall
-
-examples: all
-	$(MAKE) -C examples
