@@ -41,12 +41,12 @@ void hibp_internal_log(const char *msg) {
     }
 
     if (tokens > 0) {
-	if (log_to_syslog) {
-            /* Log to secure system auth logs */
-            syslog(LOG_AUTHPRIV | LOG_ERR, "[libhibp] %s (errno: %d)", msg, saved_errno);
-	} else {
-            fprintf(stderr, "libhibp error: %s (errno: %d)\n", msg, saved_errno);
+		if (log_to_syslog) {
+			/* Log to secure system auth logs */
+			syslog(LOG_AUTHPRIV | LOG_ERR, "[libhibp] %s (errno: %d)", msg, saved_errno);
+		} else {
+			fprintf(stderr, "libhibp error: %s (errno: %d)\n", msg, saved_errno);
+		}
+		tokens--;
 	}
-        tokens--;
-    }
 }
