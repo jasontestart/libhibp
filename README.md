@@ -29,7 +29,8 @@ sudo make install
 To try the interactive password checker:
 
 ```bash
-make examples
+cd examples
+make
 LD_LIBRARY_PATH=. ./examples/pwnedpassword
 ```
 
