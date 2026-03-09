@@ -4,11 +4,18 @@ A lightweight C library for interacting with the **Have I Been Pwned** API using
 
 ## Dependencies
 
-To build this library on a **Debian**-based distribution (e.g., Ubuntu, Mint, Kali) , you will need to install the following development packages:
+To build this library, you will need to install the development packages for cURL and OpenSSL.
 
+### Debian-based installation
 ```bash
 sudo apt update
 sudo apt install build-essential pkg-config libcurl4-openssl-dev libssl-dev
+```
+
+### RHEL-based installation (tested with Rocky Linux)
+```bash
+sudo dnf groupinstall 'Development Tools'
+sudo dnf install libcurl-devel
 ```
 
 ## Building & Installing
