@@ -1,6 +1,7 @@
 # libhibp
 
-A lightweight C library for interacting with the **Have I Been Pwned** API using k-Anonymity.
+A lightweight C library for interacting with the [Have I Been Pwned](https://haveibeenpwned.com/) **Pwned Password**
+API using k-Anonymity.
 
 ## Dependencies
 
