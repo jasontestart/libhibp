@@ -50,7 +50,7 @@ install: all
 	install -m 0755 $(TARGET) $(DESTDIR)$(LIBDIR)/
 	ln -sf $(TARGET) $(DESTDIR)$(LIBDIR)/$(SONAME)
 	ln -sf $(SONAME) $(DESTDIR)$(LIBDIR)/$(DEVLINK)
-	install -m 0644 hibp.h $(DESTDIR)$(INCDIR)/
+	install -m 0644 include/hibp.h $(DESTDIR)$(INCDIR)/
 	install -m 0644 $(PCFILE) $(DESTDIR)$(PCDIR)/
 	@echo "Installation complete. Run 'sudo ldconfig' if installing to system paths."
 
