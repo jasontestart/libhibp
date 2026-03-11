@@ -13,7 +13,6 @@ static void libhibp_init(void) {
 
     if (getuid() == 0 || geteuid() == 0) {
         log_to_syslog = 1;
-        openlog("libhibp", LOG_PID | LOG_NDELAY, LOG_AUTHPRIV);
     } else {
         log_to_syslog = 0;
     }
