@@ -40,6 +40,8 @@ LD_LIBRARY_PATH=.. ./examples/pwnedpassword
 Currently, the library implements one function:
 
 ```c
+#include <hibp.h>
+
 long long is_pwned_password(char *password, char *proxy_server_url, char *api_url);
 ```
 
@@ -57,4 +59,4 @@ Link against the library in your own projects using pkg-config:
 gcc main.c $(pkg-config --cflags --libs libhibp) -o my_app
 ```
 
-See also `examples/pwnedpassword.c`.
+See [examples](examples) directory for example code and Makefile.
