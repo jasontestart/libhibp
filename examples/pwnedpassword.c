@@ -47,7 +47,7 @@ int main() {
     memset(password, 0, sizeof(password));
 
     if (occurences < 0)
-	exit(occurences);
+		exit(occurences);
 
     if (occurences > 0)
         printf("There are %d occurences of that password in the Pwned Password database.\n", occurences);
