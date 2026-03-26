@@ -30,11 +30,11 @@ void getPassword(char *password, size_t size) {
 
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
 
-    printf("\n");
+    puts("");
 }
 
 int main() {
-    int occurences;
+    long long occurences;
     char password[512];
     memset(password, 0, sizeof(password));
 
@@ -47,10 +47,10 @@ int main() {
     memset(password, 0, sizeof(password));
 
     if (occurences < 0)
-		exit(occurences);
+        exit(occurences);
 
     if (occurences > 0)
-        printf("There are %d occurences of that password in the Pwned Password database.\n", occurences);
+        printf("There are %lld occurences of that password in the Pwned Password database.\n", occurences);
     else
         printf("That password was not found in the Pwned Password database.\n");
 }
