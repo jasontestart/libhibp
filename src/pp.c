@@ -78,8 +78,9 @@ int find_matching_entry(char hash[SHA1_HEX_DIGEST_LENGTH + 1],
     /* Google says URLs should be less that 2000 characters. */
     char url[1792];
 
-    char hash_prefix[API_HASH_PREFIX_LENGTH] = {0};
-    memcpy(hash_prefix, hash, API_HASH_PREFIX_LENGTH);
+    char hash_prefix[API_HASH_PREFIX_LENGTH+1];
+    memset(hash_prefix, 0, sizeof(hash_prefix));
+    strncpy(hash_prefix, hash, API_HASH_PREFIX_LENGTH);
     const char *hash_suffix = hash + API_HASH_PREFIX_LENGTH;
 
     if (!pwned_result) {
@@ -129,7 +130,21 @@ int find_matching_entry(char hash[SHA1_HEX_DIGEST_LENGTH + 1],
         /* Check for errors */
         if(result != CURLE_OK) {
             hibp_internal_log("curl_easy_perform() failed");
-            hibp_internal_log(curl_easy_strerror(result));
+	    hibp_internal_log(curl_easy_strerror(result));
+	    switch (result) {
+                case CURLE_UNSUPPORTED_PROTOCOL:
+                case CURLE_URL_MALFORMAT:
+                case CURLE_COULDNT_RESOLVE_HOST:
+                    hibp_internal_log(url);
+                    break;
+                case CURLE_COULDNT_RESOLVE_PROXY:
+                    hibp_internal_log(proxy_server_url);
+                    break;
+                default:
+                    /* Without this default, the compiler helpfully tells you all the
+                     * possible values you are missing!
+                     */
+	    }
         } else {
             pwned_result->occurences = 0; /* initialize */
             char *match;
