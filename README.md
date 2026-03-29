@@ -60,3 +60,6 @@ gcc main.c $(pkg-config --cflags --libs libhibp) -o my_app
 ```
 
 See [examples](examples) directory for example code and Makefile.
+
+## History and Acknowledgements
+While not a professional developer, the author wrote this as part of a "larger" personal project for an "ecosystem" of Linux system modules to interface with the Pwned Password API. Thanks to examples from the cURL team and all the body of knowledge that Google AI currated from StackOverlow providing the author with a good refresher after 25 years away from C programming.
