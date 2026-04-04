@@ -32,7 +32,7 @@ To try the interactive password checker:
 ```bash
 cd examples
 make
-LD_LIBRARY_PATH=.. ./examples/pwnedpassword
+LD_LIBRARY_PATH=.. ./pwnedpassword
 ```
 
 ## Usage
