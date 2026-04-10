@@ -90,10 +90,10 @@ int find_matching_entry(char hash[SHA1_HEX_DIGEST_LENGTH + 1],
 
     /* Construct the url we are passing to curl */
     snprintf(url,
-		sizeof(url),
-		"%s%s",
-		(api_url == NULL) ? DEFAULT_API_URL : api_url,
-	       	hash_prefix);
+            sizeof(url),
+            "%s%s",
+            (api_url == NULL) ? DEFAULT_API_URL : api_url,
+            hash_prefix);
 
     CURL *curl;
     CURLcode result = CURLE_FAILED_INIT;
@@ -130,8 +130,8 @@ int find_matching_entry(char hash[SHA1_HEX_DIGEST_LENGTH + 1],
         /* Check for errors */
         if(result != CURLE_OK) {
             hibp_internal_log("curl_easy_perform() failed");
-	    hibp_internal_log(curl_easy_strerror(result));
-	    switch (result) {
+            hibp_internal_log(curl_easy_strerror(result));
+            switch (result) {
                 case CURLE_UNSUPPORTED_PROTOCOL:
                 case CURLE_URL_MALFORMAT:
                 case CURLE_COULDNT_RESOLVE_HOST:
@@ -144,7 +144,7 @@ int find_matching_entry(char hash[SHA1_HEX_DIGEST_LENGTH + 1],
                     /* Without this default, the compiler helpfully tells you all the
                      * possible values you are missing!
                      */
-	    }
+            }
         } else {
             pwned_result->occurences = 0; /* initialize */
             char *match;
@@ -165,7 +165,7 @@ int find_matching_entry(char hash[SHA1_HEX_DIGEST_LENGTH + 1],
                 assert(strcmp(hash, pwned_result->hash) == 0);
 
                 /* Now get the occurences - can't be more than 10 digits, right? */
-                char occ_str[10];
+                char occ_str[11];
                 memset(occ_str, 0, sizeof(occ_str));
                 j++;
                 i = 0;
@@ -173,12 +173,12 @@ int find_matching_entry(char hash[SHA1_HEX_DIGEST_LENGTH + 1],
                     occ_str[i] = match[j];
                     i++;
                     j++;
-                    if (i > 10)
+                    if (i > 11)
                         return(-1);
                 }
 
                 pwned_result->occurences = atoll(occ_str);
-				
+
                 /* if we get a zero, then this probably a false positive from padding. */
                 if (pwned_result->occurences == 0) {
                     memset(pwned_result->hash, 0, sizeof(pwned_result->hash));
@@ -190,6 +190,7 @@ int find_matching_entry(char hash[SHA1_HEX_DIGEST_LENGTH + 1],
         curl_slist_free_all(headers);
         curl_easy_cleanup(curl);
     }
+
     free(chunk.memory);
     return((int)result);
 }

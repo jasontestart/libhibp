@@ -48,8 +48,9 @@ long long is_pwned_password(char *password, char *proxy_server_url, char *api_ur
 The value of `proxy_server_url` is passed to `libcurl` as [CURLOPT_PROXY](https://curl.se/libcurl/c/CURLOPT_PROXY.html). 
 Set this to `NULL` if you aren't using a proxy.
 
-The value of `api_url` can also be `NULL`, in which case it will use the default base URL `https://api.pwnedpasswords.com/range/`. The
-URL at `api_url` is expected to behave like the default base URL. See the documentation for the [Pwned Password API](https://haveibeenpwned.com/API/v3#PwnedPasswords).
+The value of `api_url` can also be `NULL`, in which case it will use the default base URL `https://api.pwnedpasswords.com/range/`. 
+The URL at `api_url` is expected to behave like the default base URL. Do not forget the trailing slash.
+See the documentation for the [Pwned Password API](https://haveibeenpwned.com/API/v3#PwnedPasswords).
 
 The function returns the number of occurences where `password` is breached, or a `-1` if there was an error.
 
